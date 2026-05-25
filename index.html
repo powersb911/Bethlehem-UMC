@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bethlehem United Methodist Church | Home</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital@0;1&family=DM+Sans:opsz,wght@9..150,400;9..150,500;9..150,600&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --color-primary: #4a5f3e;
+            --color-secondary: #c9a961;
+            --color-dark: #2a2a2a;
+            --color-light: #f9f7f4;
+        }
+
+        * {
+            box-sizing: border-box;
+            font-family: 'DM Sans', system-ui, -apple-system, sans-serif;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Crimson Text', serif;
+            color: var(--color-dark);
+            font-weight: 600;
+        }
+
+        h1 { font-size: 2.75rem; line-height: 1.2; }
+        h2 { font-size: 2rem; line-height: 1.2; }
+        h3 { font-size: 1.5rem; line-height: 1.2; }
+
+        body {
+            background: var(--color-light);
+            color: var(--color-dark);
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Custom utility classes to bridge Tailwind & CSS Variables */
+        .text-primary { color: var(--color-primary); }
+        .text-secondary { color: var(--color-secondary); }
+        
+        .nav-link {
+            color: var(--color-dark);
+            transition: color 0.3s ease;
+        }
+        .nav-link:hover {
+            color: var(--color-secondary);
+        }
+
+        /* Button System */
+        .btn-primary {
+            background: var(--color-primary);
+            color: white;
+            padding: 0.875rem 2rem;
+            border-radius: 0.375rem;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            display: inline-block;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-primary:hover {
+            background: var(--color-secondary);
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--color-primary);
+            padding: 0.875rem 2rem;
+            border: 2px solid var(--color-primary);
+            border-radius: 0.375rem;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            display: inline-block;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .btn-secondary:hover {
+            background: var(--color-primary);
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <nav class="sticky top-0 z-50 bg-white shadow-md">
+        <div class="max-w-6xl mx-auto px-4 py-4">
+            <div class="flex items-center justify-between">
+                <a href="index.html" class="text-xl font-bold text-primary tracking-wide">
+                    Bethlehem UMC
+                </a>
+
+                <div class="hidden md:flex items-center gap-6">
+                    <a href="index.html" class="text-secondary text-sm font-medium">Home</a>
+                    <a href="our-story.html" class="nav-link text-sm font-medium">Our Story</a>
+                    <a href="ministries.html" class="nav-link text-sm font-medium">Ministries</a>
+                    <a href="gallery.html" class="nav-link text-sm font-medium">Gallery</a>
+                    <a href="donations.html" class="btn-primary text-sm py-2 px-4">Donate</a>
+                </div>
+
+                <button class="md:hidden p-2 text-gray-700" id="mobileMenuBtn" aria-label="Toggle menu">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+
+            <div id="mobileMenu" class="hidden md:hidden border-t border-gray-200 mt-4 pt-4 space-y-3">
+                <a href="index.html" class="block py-2 text-sm font-medium text-secondary">Home</a>
+                <a href="our-story.html" class="block py-2 text-sm font-medium hover:text-amber-600">Our Story</a>
+                <a href="ministries.html" class="block py-2 text-sm font-medium hover:text-amber-600">Ministries</a>
+                <a href="gallery.html" class="block py-2 text-sm font-medium hover:text-amber-600">Gallery</a>
+                <a href="donations.html" class="btn-primary w-full text-center block text-sm">Donate</a>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <section id="hero" class="flex items-center justify-center min-h-[85vh] px-4 text-center bg-gradient-to-b from-white to-gray-50">
+            <div class="max-w-2xl">
+                <h1 class="mb-6 text-4xl md:text-5xl">Welcome to Bethlehem UMC</h1>
+                
+                <div class="mb-8 p-6 bg-white/60 rounded-xl inline-block shadow-sm border border-gray-100">
+                    <p class="text-xl mb-2 font-medium text-secondary">Service Times</p>
+                    <p class="text-base text-gray-600 mb-1">Sunday Mornings</p>
+                    <p class="text-xl font-semibold text-gray-800">9:00 AM & 11:00 AM</p>
+                </div>
+
+                <div class="block">
+                    <button class="btn-primary text-base py-3 px-8 mb-8 shadow-md shadow-emerald-900/10" onclick="document.getElementById('contact').scrollIntoView({behavior: 'smooth'});">
+                        Plan Your Visit
+                    </button>
+                </div>
+
+                <p class="text-sm text-gray-500 italic">
+                    All are welcome. No matter where you are on your faith journey.
+                </p>
+            </div>
+        </section>
+
+        <section id="meet-the-pastor" class="py-16 md:py-24 px-4 bg-white">
+            <div class="max-w-5xl mx-auto">
+                
+                <div class="text-center mb-10 md:mb-16">
+                    <h2 class="text-3xl md:text-5xl mb-2">Meet the Pastor</h2>
+                    
+                    <p class="hidden md:block text-xs text-secondary font-semibold uppercase tracking-widest mt-3">
+                        Serving BUMC since XYZ
+                    </p>
+                </div>
+
+                <div class="grid md:grid-cols-12 gap-10 md:gap-12 items-center">
+                    
+                    <div class="md:col-span-7 order-2 md:order-1 text-center md:text-left">
+                        
+                        <p class="block md:hidden text-xs text-secondary font-semibold uppercase tracking-widest mb-6 text-center">
+                            Serving BUMC since XYZ
+                        </p>
+
+                        <p class="text-base mb-6 leading-relaxed text-gray-700">
+                            Pastor Anthony L. Bell is a dedicated pastor who is committed to serving the people of Bethlehem United Methodist Church[cite: 117]. He is a devoted husband and father who is passionately focused on fostering community connection and spiritual growth within our local congregation.
+                        </p>
+
+                        <div class="bg-gray-50 p-6 rounded-xl border border-gray-100 shadow-sm text-left mb-8 max-w-xl mx-auto md:mx-0">
+                            <p class="text-sm text-gray-600 italic leading-relaxed mb-4">
+                                "Friendly and inviting quote from Pastor Bell. It's a place where you can ask real questions and experience authentic fellowship." [cite: 117]
+                            </p>
+                            <p class="text-xs font-semibold text-primary uppercase tracking-wider">— Anthony L. Bell, Pastor [cite: 117]</p>
+                        </div>
+
+                        <div class="block">
+                            <a href="our-story.html" class="btn-secondary text-sm font-medium py-3 px-6">
+                                Read More & Discover Our Beliefs [cite: 117]
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="md:col-span-5 order-1 md:order-2 w-full max-w-sm mx-auto">
+                        <div class="rounded-xl overflow-hidden shadow-md border border-gray-100 aspect-[4/5] bg-gray-50 flex items-center justify-center relative">
+                            <div class="text-center text-gray-400 p-6">
+                                <svg class="w-12 h-12 mx-auto mb-2 opacity-60 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
+                                </svg>
+                                <p class="text-base font-semibold text-gray-700">Pastor Photo</p>
+                                <p class="text-xs max-w-[200px] mx-auto mt-1">Replace container with an &lt;img&gt; tag once asset arrives</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div> </div>
+        </section>
+
+        <section id="calendar" class="py-16 md:py-24 px-4 bg-gray-50">
+            <div class="max-w-4xl mx-auto">
+                <h2 class="mb-8 text-center text-3xl">Upcoming Events</h2>
+
+                <div class="rounded-xl overflow-hidden bg-white shadow-md border border-gray-100 max-w-full overflow-x-auto">
+                    <div class="min-w-[600px]">
+                        <iframe 
+                            src="https://calendar.google.com/calendar/embed?height=600&wkst=1&bgcolor=%23ffffff&ctz=America%2FNew_York&src=placeholder%40gmail.com&color=%234a5f3e" 
+                            style="border:0;" 
+                            width="100%" 
+                            height="600" 
+                            frameborder="0" 
+                            scrolling="no"
+                            title="Church Events Calendar">
+                        </iframe>
+                    </div>
+                </div>
+
+                <p class="text-center text-xs text-gray-400 mt-4">
+                    Note: Replace calendar embed src with your actual Google Calendar embed link
+                </p>
+            </div>
+        </section>
+
+        <section id="contact" class="py-16 md:py-24 px-4 bg-white">
+            <div class="max-w-4xl mx-auto">
+                <h2 class="mb-8 text-center text-3xl">Contact Us & Location</h2>
+
+                <div class="rounded-xl overflow-hidden shadow-md border border-gray-100 mb-4">
+                    <iframe 
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3234.332341!2d-81.33214!3d35.74321" 
+                        width="100%" 
+                        height="400" 
+                        style="border:0;" 
+                        allowfullscreen="" 
+                        loading="lazy" 
+                        referrerpolicy="no-referrer-when-downgrade"
+                        title="Church Location Map">
+                    </iframe>
+                </div>
+
+                <p class="text-center text-xs text-gray-400 mb-12">
+                    Note: Replace map embed src with your actual Google Maps embed link
+                </p>
+
+                <div class="grid md:grid-cols-2 gap-12 bg-gray-50 p-8 rounded-xl border border-gray-100">
+                    <div>
+                        <h3 class="mb-3 text-xl">Our Location</h3>
+                        <a 
+                            href="#" 
+                            target="_blank" 
+                            rel="noopener noreferrer"
+                            class="text-base mb-6 block text-secondary font-medium transition hover:underline">
+                            123 Faith Street<br>
+                            Hometown, NC 28601<br>
+                            <span class="text-xs text-gray-500 mt-1 block font-normal">→ Click to view on Google Maps</span>
+                        </a>
+
+                        <h3 class="mb-3 text-xl">Service Times</h3>
+                        <p class="text-base text-gray-700 mb-1">Traditional Sunday: <span class="font-semibold">9:00 AM</span></p>
+                        <p class="text-base text-gray-700">Contemporary Sunday: <span class="font-semibold">11:00 AM</span></p>
+                    </div>
+
+                    <div>
+                        <h3 class="mb-4 text-xl">Get In Touch</h3>
+                        
+                        <div class="mb-4">
+                            <p class="text-xs text-gray-400 uppercase tracking-wider mb-1">Email</p>
+                            <a 
+                                href="mailto:info@bethlehemmc.org" 
+                                class="text-base text-secondary font-semibold transition hover:underline">
+                                info@bethlehemmc.org
+                            </a>
+                        </div>
+
+                        <div class="mb-4">
+                            <p class="text-xs text-gray-400 uppercase tracking-wider mb-1">Phone</p>
+                            <a 
+                                href="tel:+15551234567" 
+                                class="text-base text-secondary font-semibold transition hover:underline">
+                                (555) 123-4567
+                            </a>
+                        </div>
+
+                        <div>
+                            <p class="text-xs text-gray-400 uppercase tracking-wider mb-1">Text Updates</p>
+                            <p class="text-base text-gray-700 font-medium">Text <span class="text-primary font-bold">"BETHLEHEM"</span> to (555) 987-6543</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="py-12 px-4" style="background: var(--color-primary); color: white;">
+        <div class="max-w-4xl mx-auto text-center opacity-90">
+            <p class="text-sm mb-4">
+                © 2026 Bethlehem United Methodist Church. All rights reserved.
+            </p>
+            <div class="flex justify-center gap-6 text-xs">
+                <a href="#" class="hover:underline hover:text-amber-200 transition">Privacy Policy</a>
+                <a href="#" class="hover:underline hover:text-amber-200 transition">Terms of Use</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Close mobile menu when a link is clicked
+        const mobileLinks = mobileMenu.querySelectorAll('a');
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+    </script>
+</body>
+</html>

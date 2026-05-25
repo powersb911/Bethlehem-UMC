@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bethlehem United Methodist Church | Gallery</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital@0;1&family=DM+Sans:opsz,wght@9..150,400;9..150,500;9..150,600&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --color-primary: #4a5f3e;
+            --color-secondary: #c9a961;
+            --color-dark: #2a2a2a;
+            --color-light: #f9f7f4;
+        }
+
+        * {
+            box-sizing: border-box;
+            font-family: 'DM Sans', system-ui, -apple-system, sans-serif;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Crimson Text', serif;
+            color: var(--color-dark);
+            font-weight: 600;
+        }
+
+        h1 { font-size: 2.75rem; line-height: 1.2; }
+        h2 { font-size: 2rem; line-height: 1.2; }
+        h3 { font-size: 1.5rem; line-height: 1.2; }
+
+        body {
+            background: var(--color-light);
+            color: var(--color-dark);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        .text-primary { color: var(--color-primary); }
+        .text-secondary { color: var(--color-secondary); }
+        
+        .nav-link {
+            color: var(--color-dark);
+            transition: color 0.3s ease;
+        }
+        .nav-link:hover {
+            color: var(--color-secondary);
+        }
+
+        /* Button System */
+        .btn-primary {
+            background: var(--color-primary);
+            color: white;
+            padding: 0.875rem 2rem;
+            border-radius: 0.375rem;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            display: inline-block;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-primary:hover {
+            background: var(--color-secondary);
+            transform: translateY(-2px);
+        }
+
+        /* Dynamic Scattered Gallery Canvas Container */
+        .gallery-wrapper {
+            position: relative;
+            width: 100%;
+            margin-bottom: 100px;
+        }
+
+        .gallery-container {
+            position: relative;
+            width: 100%;
+            transition: height 0.4s ease-in-out;
+        }
+
+        .gallery-item {
+            position: absolute;
+            cursor: pointer;
+            transition: filter 0.3s ease, transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .gallery-item:hover {
+            filter: brightness(1.05);
+            z-index: 40 !important;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+            background: #e5e7eb;
+        }
+
+        .frame-wrapper {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            border-radius: 12px;
+            position: relative;
+            border: 1px solid rgba(74, 95, 62, 0.15);
+        }
+    </style>
+</head>
+<body>
+    <nav class="sticky top-0 z-50 bg-white shadow-md">
+        <div class="max-w-6xl mx-auto px-4 py-4">
+            <div class="flex items-center justify-between">
+                <a href="index.html" class="text-xl font-bold text-primary tracking-wide">
+                    Bethlehem UMC
+                </a>
+
+                <div class="hidden md:flex items-center gap-6">
+                    <a href="index.html" class="nav-link text-sm font-medium">Home</a>
+                    <a href="our-story.html" class="nav-link text-sm font-medium">Our Story</a>
+                    <a href="ministries.html" class="nav-link text-sm font-medium">Ministries</a>
+                    <a href="gallery.html" class="text-secondary text-sm font-medium">Gallery</a>
+                    <a href="donations.html" class="btn-primary text-sm py-2 px-4">Donate</a>
+                </div>
+
+                <button class="md:hidden p-2 text-gray-700" id="mobileMenuBtn" aria-label="Toggle menu">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+
+            <div id="mobileMenu" class="hidden md:hidden border-t border-gray-200 mt-4 pt-4 space-y-3">
+                <a href="index.html" class="block py-2 text-sm font-medium hover:text-amber-600">Home</a>
+                <a href="our-story.html" class="block py-2 text-sm font-medium hover:text-amber-600">Our Story</a>
+                <a href="ministries.html" class="block py-2 text-sm font-medium hover:text-amber-600">Ministries</a>
+                <a href="gallery.html" class="block py-2 text-sm font-medium text-secondary">Gallery</a>
+                <a href="donations.html" class="btn-primary w-full text-center block text-sm">Donate</a>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <section class="py-12 md:py-16 text-center bg-gradient-to-b from-white to-gray-50 border-b border-gray-100">
+            <div class="max-w-2xl mx-auto px-4">
+                <h1 class="mb-4 text-4xl md:text-5xl">Our Community Gallery</h1>
+                <p class="text-base text-gray-600 leading-relaxed">
+                    A glimpse into life at Bethlehem UMC. Refresh the page to explore our moments through an interactive, organic collection of our walk together.
+                </p>
+            </div>
+        </section>
+
+        <section class="py-12 px-4 max-w-7xl mx-auto relative">
+            <div class="gallery-wrapper">
+                <div class="gallery-container" id="galleryContainer">
+                    </div>
+            </div>
+
+            <div class="text-center text-xs text-gray-400 mt-8 tracking-wider uppercase">
+                ↓ Scroll down to see more of our journey ↓
+            </div>
+        </section>
+    </main>
+
+    <footer class="py-12 px-4" style="background: var(--color-primary); color: white;">
+        <div class="max-w-4xl mx-auto text-center opacity-90">
+            <p class="text-sm mb-4">
+                © 2026 Bethlehem United Methodist Church. All rights reserved.
+            </p>
+            <div class="flex justify-center gap-6 text-xs">
+                <a href="#" class="hover:underline hover:text-amber-200 transition">Privacy Policy</a>
+                <a href="#" class="hover:underline hover:text-amber-200 transition">Terms of Use</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // High-quality public domain church & community stock images from Unsplash
+        const churchImages = [
+            'https://images.unsplash.com/photo-1438032005730-c779502df39b?auto=format&fit=crop&w=600&q=80',
+            'https://images.unsplash.com/photo-1515162305285-0293e4767cc2?auto=format&fit=crop&w=600&q=80',
+            'https://images.unsplash.com/photo-1544427928-1428559ad00d?auto=format&fit=crop&w=600&q=80',
+            'https://images.unsplash.com/photo-1461896836934-ffe607ba8211?auto=format&fit=crop&w=600&q=80',
+            'https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&w=600&q=80',
+            'https://images.unsplash.com/photo-1529070538774-1843cb3265df?auto=format&fit=crop&w=600&q=80',
+            'https://images.unsplash.com/photo-1484712401471-05c7215e66eb?auto=format&fit=crop&w=600&q=80',
+            'https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=600&q=80',
+            'https://images.unsplash.com/photo-1472653525502-bf5540a55a5c?auto=format&fit=crop&w=600&q=80',
+            'https://images.unsplash.com/photo-1519750157634-b6d493a0f77c?auto=format&fit=crop&w=600&q=80',
+            'https://images.unsplash.com/photo-1517457373958-b7bdd4587205?auto=format&fit=crop&w=600&q=80',
+            'https://images.unsplash.com/photo-1576085898323-2183fa9bc2af?auto=format&fit=crop&w=600&q=80'
+        ];
+
+        // Aspect ratio size structures optimized for modern displays
+        const sizePresets = [
+            { width: 240, height: 320 },
+            { width: 280, height: 360 },
+            { width: 300, height: 300 },
+            { width: 260, height: 340 },
+            { width: 320, height: 240 }
+        ];
+
+        // Collision Check Logic
+        function checkCollision(newRect, existingRects, padding = 30) {
+            for (let rect of existingRects) {
+                if (!(newRect.right + padding < rect.left ||
+                      newRect.left - padding > rect.right ||
+                      newRect.bottom + padding < rect.top ||
+                      newRect.top - padding > rect.bottom)) {
+                    return true; 
+                }
+            }
+            return false;
+        }
+
+        // Generate coordinates using client viewport width safely
+        function generateGalleryPositions(numImages, containerWidth) {
+            const positions = [];
+            const placedRects = [];
+            const maxAttempts = 100; 
+            const padding = 35; 
+            
+            // Scaled dynamically on mobile vs large monitors
+            const isMobile = containerWidth < 768;
+            const horizontalBuffer = isMobile ? 10 : 40;
+            const targetHeightSpread = isMobile ? 2800 : 1800; 
+            
+            for (let i = 0; i < numImages; i++) {
+                // Determine responsive sizing downscaling for small devices
+                let basePreset = sizePresets[i % sizePresets.length];
+                let width = isMobile ? Math.floor(basePreset.width * 0.65) : basePreset.width;
+                let height = isMobile ? Math.floor(basePreset.height * 0.65) : basePreset.height;
+
+                let placed = false;
+                let attempts = 0;
+
+                while (!placed && attempts < maxAttempts) {
+                    const randomLeft = Math.random() * (containerWidth - width - (horizontalBuffer * 2)) + horizontalBuffer;
+                    const randomTop = Math.random() * (targetHeightSpread - height) + 40;
+
+                    const newRect = {
+                        left: randomLeft,
+                        top: randomTop,
+                        right: randomLeft + width,
+                        bottom: randomTop + height
+                    };
+
+                    if (!checkCollision(newRect, placedRects, padding)) {
+                        positions.push({
+                            left: randomLeft,
+                            top: randomTop,
+                            width: width,
+                            height: height,
+                            zIndex: i + 5
+                        });
+                        placedRects.push(newRect);
+                        placed = true;
+                    }
+                    attempts++;
+                }
+
+                // Fallback stack pattern logic if space constraints trigger collision
+                if (!placed) {
+                    const maxBottom = placedRects.length > 0 ? Math.max(...placedRects.map(r => r.bottom)) + padding : 50;
+                    positions.push({
+                        left: Math.random() * (containerWidth - width - (horizontalBuffer * 2)) + horizontalBuffer,
+                        top: maxBottom,
+                        width: width,
+                        height: height,
+                        zIndex: i + 5
+                    });
+                    placedRects.push({
+                        left: positions[positions.length-1].left,
+                        top: positions[positions.length-1].top,
+                        right: positions[positions.length-1].left + width,
+                        bottom: positions[positions.length-1].top + height
+                    });
+                }
+            }
+            return positions;
+        }
+
+        function initGallery() {
+            const galleryContainer = document.getElementById('galleryContainer');
+            galleryContainer.innerHTML = ''; // Clean canvas
+            
+            const containerWidth = galleryContainer.parentElement.offsetWidth;
+            const numImagesToUse = churchImages.length;
+            const positions = generateGalleryPositions(numImagesToUse, containerWidth);
+
+            positions.forEach((pos, index) => {
+                const item = document.createElement('div');
+                item.className = 'gallery-item';
+                item.style.left = pos.left + 'px';
+                item.style.top = pos.top + 'px';
+                item.style.width = pos.width + 'px';
+                item.style.height = pos.height + 'px';
+                item.style.zIndex = pos.zIndex;
+
+                const imageUrl = churchImages[index % churchImages.length];
+
+                item.innerHTML = `
+                    <div class="frame-wrapper">
+                        <img src="${imageUrl}" alt="Bethlehem UMC Moment ${index + 1}" loading="lazy" />
+                    </div>
+                `;
+                galleryContainer.appendChild(item);
+            });
+
+            // Dynamically set container bounds relative to deepest element
+            const maxTop = Math.max(...positions.map(p => p.top + p.height));
+            galleryContainer.style.height = (maxTop + 80) + 'px';
+        }
+
+        // Initialize grid on run
+        window.addEventListener('DOMContentLoaded', initGallery);
+        
+        // Debounced reload on layout viewport change
+        let resizeTimer;
+        window.addEventListener('resize', () => {
+            clearTimeout(resizeTimer);
+            resizeTimer = setTimeout(initGallery, 250);
+        });
+
+        // Sticky Navbar Toggle Logic
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+    </script>
+</body>
+</html>
